@@ -19,7 +19,10 @@ const Home: NextPage = () => {
   }
   return (
     <div className="m-10 prose">
-      <h1 className="font-bold text-3xl mb-5">Notes</h1>
+      <h1 className="font-bold text-3xl mb-0">Mavié</h1>
+      <p className="text-sm mt-0 mb-5">
+        (<strong>ma</strong>rkdown pre<strong>vie</strong>w)
+      </p>
       <div className="sm:flex justify-between items-center mb-2">
         <button className="rounded p-1 bg-emerald-200" onClick={SaveFile}>
           Export File
