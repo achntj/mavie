@@ -8,7 +8,9 @@ import FileSaver from "file-saver";
 import "prismjs/themes/prism-tomorrow.css";
 
 const Home: NextPage = () => {
-  const [text, setText] = useState("");
+  const initText =
+    "---\ntitle: Frontmatter works with remark-frontmatter\n---\n\nStart editing *this* text right **now** [^1]\n\n[^1]: Footnotes work with GFM (Github Flavored Markdown)!";
+  const [text, setText] = useState(initText);
   const [gfm, setGfm] = useState(true);
   const [front, setFront] = useState(true);
   function SaveFile() {
