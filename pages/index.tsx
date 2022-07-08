@@ -1,16 +1,21 @@
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import rehypePrism from "rehype-prism-plus";
-import FileSaver from "file-saver";
 import "prismjs/themes/prism-tomorrow.css";
+import FileSaver from "file-saver";
+import Link from "next/link";
 
 const Home: NextPage = () => {
-  const initText =
+  let initText =
     "---\ntitle: Frontmatter works with remark-frontmatter\n---\n\nStart editing *this* text right **now** [^1]\n\n[^1]: Footnotes work with GFM (Github Flavored Markdown)!";
   const [text, setText] = useState(initText);
+  useEffect(() => {
+    const template = localStorage.getItem("mavieTemplate");
+    if (template !== null) setText(template);
+  }, []);
   const [gfm, setGfm] = useState(true);
   const [front, setFront] = useState(true);
   function SaveFile() {
@@ -21,10 +26,13 @@ const Home: NextPage = () => {
   }
   return (
     <div className="m-10 prose">
-      <h1 className="font-bold text-3xl mb-0">Mavié</h1>
-      <p className="text-sm mt-0 mb-5">
-        (<strong>ma</strong>rkdown pre<strong>vie</strong>w)
-      </p>
+      <div className="mb-5">
+        <h1 className="font-bold text-3xl mb-0">Mavié</h1>
+        <p className="text-sm mt-0">
+          (<strong>ma</strong>rkdown pre<strong>vie</strong>w)
+        </p>
+        <Link href="/templates">Use a Template</Link>
+      </div>
       <div className="sm:flex justify-between items-center mb-2">
         <button className="rounded p-1 bg-emerald-200" onClick={SaveFile}>
           Export File
