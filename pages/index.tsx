@@ -29,7 +29,7 @@ const Home: NextPage = () => {
     FileSaver.saveAs(blob, "savedFile.md");
   }
 
-  function autoSave(e) {
+  function autoSave(e: React.ChangeEvent<HTMLInputElement>) {
     setText(e.target.value);
     localStorage.setItem("mavieProgress", e.target.value);
   }
