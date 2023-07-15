@@ -6,7 +6,6 @@ import remarkGfm from "remark-gfm";
 import rehypePrism from "rehype-prism-plus";
 import "prismjs/themes/prism-tomorrow.css";
 import FileSaver from "file-saver";
-import Link from "next/link";
 
 const Home: NextPage = () => {
   let initText =
@@ -29,7 +28,7 @@ const Home: NextPage = () => {
     FileSaver.saveAs(blob, "savedFile.md");
   }
 
-  function autoSave(e: React.ChangeEvent<HTMLInputElement>) {
+  function autoSave(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setText(e.target.value);
     localStorage.setItem("mavieProgress", e.target.value);
   }
